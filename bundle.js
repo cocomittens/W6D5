@@ -138,10 +138,12 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "clock"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         id: "time"
-      }, this.state.time.getHours(), " :", this.state.time.getMinutes(), " :", this.state.time.getSeconds()));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        class: "clock"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Time: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.time.getHours(), ":", this.state.time.getMinutes(), ":", this.state.time.getSeconds())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        class: "clock"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Date: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.time.getHours(), ":", this.state.time.getMinutes(), ":", this.state.time.getSeconds())));
     }
   }, {
     key: "setTickInterval",
@@ -204,20 +206,19 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
- // import { threadId } from 'worker_threads';
+ // import SubComponent from 'react-subcomponent';
 
 var Tabs =
 /*#__PURE__*/
 function (_React$Component) {
   _inherits(Tabs, _React$Component);
 
-  function Tabs(props, arr) {
+  function Tabs(props) {
     var _this;
 
     _classCallCheck(this, Tabs);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Tabs).call(this, props));
-    _this.arr = arr;
     _this.state = {
       selectedIndex: 0
     };
@@ -229,12 +230,32 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "tabs"
-      }, "Hiii");
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        id: "tab-headers"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.props.tabs[0].title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.props.tabs[1].title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.props.tabs[2].title))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        class: "content"
+      }, this.props.tabs[0].content));
     }
   }]);
 
   return Tabs;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component); // class Header extends SubComponent {
+//     constructor(props) {
+//         super(props);
+//     }
+//     render() {
+//         return (
+//             <div>
+//                 <h1>
+//                     {this.props.title}
+//                     {this.props.title}
+//                     {this.props.title}
+//                 </h1>
+//             </div>
+//         );
+//     }
+// }
+
 
 /* harmony default export */ __webpack_exports__["default"] = (Tabs);
 
@@ -292,7 +313,18 @@ function (_React$Component) {
   _createClass(Root, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_clock__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tabs__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_clock__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tabs__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        tabs: [{
+          title: 'one',
+          content: 'I am one'
+        }, {
+          title: 'two',
+          content: 'second pane here'
+        }, {
+          title: 'three',
+          content: 'third pane here'
+        }]
+      }));
     }
   }]);
 

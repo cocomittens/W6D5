@@ -8,13 +8,25 @@ class Clock extends React.Component {
 
     render() {
         return (
-            <div id="clock">
-                <h2 id="time"> 
-                    {this.state.time.getHours()} :
-                    {this.state.time.getMinutes()} :
-                    {this.state.time.getSeconds()}
-                </h2>
-            </div>
+                
+                <div id="time"> 
+                    <div class="clock">
+                        <h1>Time: </h1>
+                    <span> 
+                        {this.state.time.getHours()}:
+                        {this.state.time.getMinutes()}:
+                        {this.state.time.getSeconds()}
+                        </span>
+                    </div>
+                    <div class="clock">
+                    <h1>Date: </h1>
+                    <span>
+                        {this.state.time.getHours()}:
+                        {this.state.time.getMinutes()}:
+                        {this.state.time.getSeconds()}
+                        </span>
+                    </div>
+                </div>
            
         );
     }

@@ -12,7 +12,9 @@ class Root extends React.Component {
         return (
             <div>
             <Clock />
-            <Tabs />
+            <Tabs tabs={[{title: 'one', content: 'I am one'}, 
+            {title: 'two', content: 'second pane here'}, 
+            {title: 'three', content: 'third pane here'}]} />
             </div>
         )
     }

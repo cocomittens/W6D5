@@ -1,18 +1,75 @@
+/* Clock */
+
+.clock {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+}
+
 #time {
+    width: 400px;
     font-family: 'Roboto';
-    font-size: 50px;
-    background: turquoise;
-    padding: 20px;
+    font-size: 30px;
+    background: lightpink;
+    padding: 10px;
     border: 3px solid #000;
 }
+
+/* Tabs */
 
 #tabs {
-    width: 200px;
-    height: 300px;
-    background: red;
-    border: 3px solid #000;
+    width: 210px;
+    height: 250px;
+    border-bottom: 3px solid #000;
     font-family: 'Roboto';
+    margin: 20px;
 }
 
-body {display: flex;
-justify-content: center;}
+#tab-headers {
+    list-style: none;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+}
+
+ #tab-headers li {
+    width: 70px;
+    background-color: lightgoldenrodyellow;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    
+}
+
+.content {
+    background: lightcyan;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    border: 2px solid black;
+}
+
+/* Root */
+
+#root {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Reset */
+
+html, body, h1, p, ul {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font-size: inherit;
+    text-align: inherit;
+    text-decoration: inherit;
+    color: inherit;
+    background: transparent;
+}
