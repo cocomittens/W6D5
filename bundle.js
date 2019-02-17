@@ -141,9 +141,9 @@ function (_React$Component) {
         id: "time"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         class: "clock"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Time: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.time.getHours(), ":", this.state.time.getMinutes(), ":", this.state.time.getSeconds())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Time: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.time.getMonth(), "/", this.state.time.getDate(), "/", this.state.time.getFullYear())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         class: "clock"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Date: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.time.getHours(), ":", this.state.time.getMinutes(), ":", this.state.time.getSeconds())));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Date: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.time.getHours() % 12, ":", this.state.time.getMinutes(), ":", this.state.time.getSeconds())));
     }
   }, {
     key: "setTickInterval",
@@ -226,36 +226,29 @@ function (_React$Component) {
   }
 
   _createClass(Tabs, [{
+    key: "setCurrTab",
+    value: function setCurrTab(index) {
+      this.setState({
+        selectedIndex: index
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "tabs"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         id: "tab-headers"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.props.tabs[0].title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.props.tabs[1].title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.props.tabs[2].title))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, this.props.tabs.map(function (tab) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, tab.title);
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         class: "content"
-      }, this.props.tabs[0].content));
+      }, this.props.tabs[this.state.selectedIndex].content));
     }
   }]);
 
   return Tabs;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component); // class Header extends SubComponent {
-//     constructor(props) {
-//         super(props);
-//     }
-//     render() {
-//         return (
-//             <div>
-//                 <h1>
-//                     {this.props.title}
-//                     {this.props.title}
-//                     {this.props.title}
-//                 </h1>
-//             </div>
-//         );
-//     }
-// }
-
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (Tabs);
 

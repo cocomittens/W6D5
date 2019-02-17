@@ -13,15 +13,15 @@ class Clock extends React.Component {
                     <div class="clock">
                         <h1>Time: </h1>
                     <span> 
-                        {this.state.time.getHours()}:
-                        {this.state.time.getMinutes()}:
-                        {this.state.time.getSeconds()}
+                        {this.state.time.getMonth()}/
+                        {this.state.time.getDate()}/
+                        {this.state.time.getFullYear()}
                         </span>
                     </div>
                     <div class="clock">
                     <h1>Date: </h1>
                     <span>
-                        {this.state.time.getHours()}:
+                        {this.state.time.getHours() % 12}:
                         {this.state.time.getMinutes()}:
                         {this.state.time.getSeconds()}
                         </span>

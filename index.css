@@ -20,7 +20,6 @@
 #tabs {
     width: 210px;
     height: 250px;
-    border-bottom: 3px solid #000;
     font-family: 'Roboto';
     margin: 20px;
 }
@@ -31,13 +30,16 @@
     display: flex;
     justify-content: space-between;
     font-size: 24px;
+    cursor: pointer;
 }
 
  #tab-headers li {
     width: 70px;
     background-color: lightgoldenrodyellow;
-    border: 2px solid black;
     display: flex;
+    border-top: 2px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
     justify-content: center;
     align-items: center;
     border-top-left-radius: 5px;

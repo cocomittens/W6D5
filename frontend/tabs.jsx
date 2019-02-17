@@ -9,36 +9,27 @@ class Tabs extends React.Component {
 
     }
 
+    setCurrTab(index) {
+        this.setState({selectedIndex: index});
+    }
+
     render() {
         return (
             <div id="tabs">
                 <ul id="tab-headers">
-                    <li><span>{this.props.tabs[0].title}</span></li>
-                    <li><span>{this.props.tabs[1].title}</span></li>
-                    <li><span>{this.props.tabs[2].title}</span></li>
+                    {
+                        this.props.tabs.map(tab => <li>{tab.title}</li>)
+                    }
                 </ul>
-                <p class="content">{this.props.tabs[0].content}</p>
+                <p class="content">
+                    {   
+                        this.props.tabs[this.state.selectedIndex].content
+                    }
+                </p>
             </div>
         );
     }
 }
 
-
-// class Header extends SubComponent {
-//     constructor(props) {
-//         super(props);
-//     }
-//     render() {
-//         return (
-//             <div>
-//                 <h1>
-//                     {this.props.title}
-//                     {this.props.title}
-//                     {this.props.title}
-//                 </h1>
-//             </div>
-//         );
-//     }
-// }
 
 export default Tabs;
