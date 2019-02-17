@@ -1,15 +1,15 @@
 import React from 'react';
-// import SubComponent from 'react-subcomponent';
-
+import uniqueId from 'react-html-id';
 
 class Tabs extends React.Component {
     constructor(props) {
         super(props);
+        uniqueId.enableUniqueIds(this);
         this.state = {selectedIndex: 0};
-
     }
 
-    setCurrTab(index) {
+    clickTab(event) {
+        let index = event.target.id.slice(-1)-1;
         this.setState({selectedIndex: index});
     }
 
@@ -18,7 +18,14 @@ class Tabs extends React.Component {
             <div id="tabs">
                 <ul id="tab-headers">
                     {
-                        this.props.tabs.map(tab => <li>{tab.title}</li>)
+                        this.props.tabs.map((tab) => {
+                            return <li 
+                                id={this.nextUniqueId()}
+                                onClick={event => this.clickTab(event)}
+                            >
+                                {tab.title}
+                            </li>
+                        })
                     }
                 </ul>
                 <p class="content">

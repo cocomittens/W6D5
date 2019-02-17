@@ -8,7 +8,7 @@ class Clock extends React.Component {
 
     render() {
         return (
-                
+    
                 <div id="time"> 
                     <div class="clock">
                         <h1>Time: </h1>

@@ -188,6 +188,8 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_html_id__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-html-id */ "./node_modules/react-html-id/index.js");
+/* harmony import */ var react_html_id__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_html_id__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -198,15 +200,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
- // import SubComponent from 'react-subcomponent';
+
+
 
 var Tabs =
 /*#__PURE__*/
@@ -219,6 +222,7 @@ function (_React$Component) {
     _classCallCheck(this, Tabs);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Tabs).call(this, props));
+    react_html_id__WEBPACK_IMPORTED_MODULE_1___default.a.enableUniqueIds(_assertThisInitialized(_this));
     _this.state = {
       selectedIndex: 0
     };
@@ -226,8 +230,9 @@ function (_React$Component) {
   }
 
   _createClass(Tabs, [{
-    key: "setCurrTab",
-    value: function setCurrTab(index) {
+    key: "clickTab",
+    value: function clickTab(event) {
+      var index = event.target.id.slice(-1) - 1;
       this.setState({
         selectedIndex: index
       });
@@ -235,12 +240,19 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "tabs"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         id: "tab-headers"
       }, this.props.tabs.map(function (tab) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, tab.title);
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          id: _this2.nextUniqueId(),
+          onClick: function onClick(event) {
+            return _this2.clickTab(event);
+          }
+        }, tab.title);
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         class: "content"
       }, this.props.tabs[this.state.selectedIndex].content));
@@ -251,6 +263,64 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (Tabs);
+
+/***/ }),
+
+/***/ "./frontend/weather.jsx":
+/*!******************************!*\
+  !*** ./frontend/weather.jsx ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// import React from 'react';
+// class Weather extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = {pos: [0, 0], weather: ''}
+//     }
+//     success(position) {
+//         const latitude = position.coords.latitude;
+//         const longitude = position.coords.longitude;
+//         this.setState({pos: [latitude, longitude]});
+//         this.setWeather(latitude, longitude)
+//     }
+//     setWeather(lat, lon) {
+//         const key = 'a51b02f3ed3546de91d00d4f89a89e9c';
+//         let url = `api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&key=${key}`;
+//         let request = new XMLHttpRequest();
+//         let that = this;
+//         request.open('GET', url, true);
+//         request.onload = function () {
+//             if (request.status >= 200 && request.status < 400) {
+//                 // Success!
+//                 let resp = request.responseText;
+//                 alert(resp);
+//                 that.setState({weather: resp});
+//             } else {
+//                 // We reached our target server, but it returned an error
+//                 alert('error 2');
+//             }
+//         };
+//         request.onerror = function () {
+//             // There was a connection error of some sort
+//             alert('error');
+//         };
+//         request.send();
+//     }
+//     render() {
+//         return (
+//             <div>
+//                 <p>pos: {this.state.pos[0]}, {this.state.pos[1]}</p>
+//                 <p>{this.state.weather}</p>
+//             </div>
+//         );
+//     }
+//     componentDidMount() {
+//         navigator.geolocation.getCurrentPosition(this.success.bind(this));
+//     }
+// }
+// export default Weather;
 
 /***/ }),
 
@@ -269,6 +339,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _clock__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./clock */ "./frontend/clock.jsx");
 /* harmony import */ var _tabs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tabs */ "./frontend/tabs.jsx");
+/* harmony import */ var _weather__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./weather */ "./frontend/weather.jsx");
+/* harmony import */ var _weather__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_weather__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -286,6 +358,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -21696,6 +21769,78 @@ function checkDCE() {
 
 if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/react-dom.development.js */ "./node_modules/react-dom/cjs/react-dom.development.js");
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/react-html-id/index.js":
+/*!*********************************************!*\
+  !*** ./node_modules/react-html-id/index.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/* Copyright (c) 2018 Hampus Joakim Nilsson
+ * Licensed via the MIT license.
+ **/
+
+// Unique counter per COMPONENT that uniqueness is added to
+var _globallyUniqueIdCounter = 0
+
+function resetUniqueIds() {
+    _globallyUniqueIdCounter = 0
+}
+
+function injectUniqueness(component) {
+
+    var instanceId;
+    if (arguments.length > 1) {
+        instanceId = arguments[1];
+        if (typeof instanceId !== 'string') {
+            console.log('Warning: Expected string as second argument passed to `injectUniqueness`')
+            instanceId = '' + instanceId
+        }
+    }
+
+    // Store all state in the closure for the member functions
+    var _render = component.render
+    var _htmlIds = {}
+    var _uniqueIdCounter = 0
+    var _uniqueInstance = instanceId || ++_globallyUniqueIdCounter
+
+    // Inject the following functions into the component
+    component.render = function () {
+        _uniqueIdCounter = 0
+        return _render.apply(component)
+    }
+
+    component.nextUniqueId = function () {
+        ++_uniqueIdCounter
+        return 'id-' + _uniqueInstance + '-' + _uniqueIdCounter
+    }
+
+    component.lastUniqueId = function () {
+        return 'id-' + _uniqueInstance + '-' + _uniqueIdCounter
+    }
+
+    component.getUniqueId = function (identifier) {
+        if (typeof identifier !== 'string') {
+            console.log('Warning: Expected string identifer passed to `getUniqueId`')
+            identifier = '' + identifier
+        }
+
+        if (!_htmlIds[identifier]) {
+            _htmlIds[identifier] = 'id-' + _uniqueInstance + '-' + identifier
+        }
+
+        return _htmlIds[identifier]
+    }
+}
+
+module.exports = {
+    resetUniqueIds: resetUniqueIds,
+    enableUniqueIds: injectUniqueness,
 }
 
 
